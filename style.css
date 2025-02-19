@@ -13,6 +13,8 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Added max-width for better responsiveness */
 }
 
 #task-list {
@@ -27,6 +29,7 @@ body {
   padding: 10px;
   background-color: #f9f9f9;
   border-bottom: 1px solid #ddd;
+  margin-bottom: 5px; /* Added margin for spacing between tasks */
 }
 
 .completed {
@@ -40,8 +43,25 @@ button {
   border: none;
   padding: 10px 15px;
   cursor: pointer;
+  border-radius: 5px; /* Added rounded corners */
 }
 
 button:hover {
   background-color: #218838;
+}
+
+button:active {
+  transform: scale(0.98); /* Added button active effect */
+}
+
+#task-list button {
+  background-color: #dc3545; /* Red for delete button */
+  color: white;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+#task-list button:hover {
+  background-color: #c82333; /* Darker red for hover */
 }
