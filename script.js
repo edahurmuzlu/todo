@@ -14,9 +14,11 @@ window.onload = () => {
 addTaskButton.addEventListener('click', () => {
   const taskText = taskInput.value.trim();
   if (taskText !== '') {
-    createTaskElement(taskText, false);
-    saveTask(taskText, false);
+    createTaskElement(taskText, false);  // Add task with completed status as false
+    saveTask(taskText, false);  // Ensure the status is false when adding new task
     taskInput.value = '';
+  } else {
+    alert('Please enter a task'); // Alert if input is empty
   }
 });
 
@@ -26,7 +28,7 @@ function createTaskElement(taskText, isCompleted) {
   const textNode = document.createTextNode(taskText);
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Delete';
-  
+
   if (isCompleted) {
     li.classList.add('completed');
   }
@@ -64,7 +66,7 @@ function removeTaskFromStorage(taskText) {
 // Update task status in localStorage
 function updateTaskStatus(taskText, isCompleted) {
   let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks = tasks.map(task => 
+  tasks = tasks.map(task =>
     task.text === taskText ? { ...task, completed: isCompleted } : task
   );
   localStorage.setItem('tasks', JSON.stringify(tasks));
